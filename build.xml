@@ -1,0 +1,34 @@
+<project name="CSCE155H Functions and Enumerated Types Lab" basedir="." default="main">
+
+    <property name="src.dir" value="src"/> 
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/> 
+    <property name="main.class" value="unl.cse.florist.Florist"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- executable and fork properties added as a workaround for CSE's ant configuration 2013-12-06 -->  
+    <target name="compile">
+      <mkdir dir="${classes.dir}"/>
+      <javac includeantruntime="false" 
+             executable="/usr/bin/javac"
+             fork="true"
+             srcdir="${src.dir}" 
+             destdir="${classes.dir}"
+             includes="ADD FILES HERE"/>
+    </target>
+
+    <path id="run.path">
+      <pathelement path="${classes.dir}"/>
+    </path>
+
+    <target name="run">
+       <java classname="${main.class}"
+             fork="false">
+         <classpath refid="run.path"/>
+       </java>
+    </target>
+
+</project>
