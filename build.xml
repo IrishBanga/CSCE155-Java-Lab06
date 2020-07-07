@@ -1,4 +1,5 @@
-<project name="CSCE155H Functions and Enumerated Types Lab" basedir="." default="main">
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CSCE155H Functions and Enumerated Types Lab" basedir="." default="compile">
 
     <property name="src.dir" value="src"/> 
     <property name="build.dir" value="build"/>
