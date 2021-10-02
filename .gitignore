@@ -86,3 +86,6 @@ figures/_minted*
 
 #
 .DS_Store
+
+# solution package/dir
+solution*
