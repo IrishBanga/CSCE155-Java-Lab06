@@ -81,7 +81,7 @@ teamed up online (via Zoom).
 \textbf{For students in the face-to-face section:} your
 lab instructor will team you up with a partner.  
 
-To encourage collaboration and a team environment, labs are be
+To encourage collaboration and a team environment, labs are
 structured in a \emph{peer programming} setup.  At the start of
 each lab, you will be randomly paired up with another student 
 (conflicts such as absences will be dealt with by the lab instructor).
@@ -93,7 +93,7 @@ telling the driver what to do next.  The driver will be in charge of the
 keyboard and workstation.  Both driver and navigator are responsible
 for suggesting fixes and solutions together.  Neither the navigator
 nor the driver is ``in charge.''  Beyond your immediate pairing, you
-are encouraged to help and interact and with other pairs in the lab.
+are encouraged to help and interact with other pairs in the lab.
 
 Each week you should alternate: if you were a driver last week, 
 be a navigator next, etc.  Resolve any issues (you were both drivers
@@ -124,9 +124,9 @@ Enumerated types are often ordered and internally associated with
 integers (starting with 0 by default and incremented by one in the 
 order of the list).  The purpose of enumerated types is to organize 
 certain types and enforce specific values.  Without enumerated types, 
-integer values must be used and the convention of assigning certain 
-integer values to certain types in a logical collection must be remembered 
-or documentation referred to as needed.  Enumerated types provide 
+integer values would be used, called ``magic numbers.''  This would 
+require constantly looking back to the documentation to find out which
+numbers corresponded to which value.  Enumerated types provide 
 a human-readable ``tag'' to these types of elements, relieving the 
 programmer of continually having to refer to the convention and avoiding 
 errors.
@@ -215,7 +215,7 @@ Clone the GitHub project for this lab using the following URL:
 
 In the previous lab you designed several functions to convert RGB
 values to gray-scale (using one of three techniques) and to sepia.
-The details of how to do this available in the previous lab and 
+The details of how to do this are available in the previous lab and 
 are repeated for your convenience below.  
 
 In this lab you will update these functions to make them a bit
@@ -223,8 +223,9 @@ easier to use and to utilize error handling.  For the
 gray scale functions, there was a function for each of the three 
 techniques.  We can simplify this design and have only one function
 that takes another parameter: an enumerated type that identifies
-which of the three techniques (average, lightness or luminosity).
-In addition, you will add error handling to both functions.
+which of the three techniques (average, lightness or luminosity)
+are to be used.  In addition, you will add error handling to 
+both functions.
 
 \begin{enumerate}
   \item Create an enumerated type named \mintinline{java}{GrayScaleMode}
