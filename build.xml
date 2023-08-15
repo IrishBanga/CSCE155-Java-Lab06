@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CSCE155H Methods and Enumerated Types Lab" basedir="." default="compile">
+
+    <property name="src.dir" value="src"/> 
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/> 
+    <property name="main.class" value="CHANGE THIS"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+      <mkdir dir="${classes.dir}"/>
+      <javac includeantruntime="false" 
+             executable="/usr/bin/javac"
+             fork="true"
+             srcdir="${src.dir}" 
+             destdir="${classes.dir}"/>
+    </target>
+
+    <path id="run.path">
+      <pathelement path="${classes.dir}"/>
+    </path>
+
+    <target name="run">
+       <java classname="${main.class}"
+             fork="false">
+         <classpath refid="run.path"/>
+       </java>
+    </target>
+
+</project>

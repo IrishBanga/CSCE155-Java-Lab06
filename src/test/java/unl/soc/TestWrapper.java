@@ -24,14 +24,11 @@ import java.util.List;
  * providing a (space delimited) list of fully qualified package/class JUnit
  * test classes. Examples:
  * 
- * Compile: javac -d . -cp /junit-platform-console-standalone-1.9.2.jar
- * <filename>.java
+ * Compile: javac -d . -cp .:/junit-platform-console-standalone-1.9.2.jar *.java
  * 
  * Run:
  * 
- * java -jar /junit-platform-console-standalone-1.9.2.jar --class-path .
- * --disable-ansi-colors -c unl.soc.TestWrapper unl.soc.StatisticsTests
- * unl.soc.OtherTests -reportPass
+ * java -cp .:./junit-platform-console-standalone-1.9.2.jar unl.soc.TestWrapper unl.soc.ColorUtilsTests -reportPass
  * 
  * @author cbourke
  */
