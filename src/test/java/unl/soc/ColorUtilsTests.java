@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

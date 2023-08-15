@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 /**
  * An RGB (Red-Green-Blue) color object.  All RGB values are 
