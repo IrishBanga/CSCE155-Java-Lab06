@@ -101,8 +101,8 @@ public class TestWrapper {
 
 		// prints total number of points, number of pass/fail
 		// and total tests in csv format
-		System.out.printf("Tests PASS: %d\n", numFail);
-		System.out.printf("Tests FAIL: %d\n", numPass);
+		System.out.printf("Tests PASS: %d\n", numPass);
+		System.out.printf("Tests FAIL: %d\n", numFail);
 		System.out.printf("Total:      %d\n", numTests);
 
 		if (reportPass) {
