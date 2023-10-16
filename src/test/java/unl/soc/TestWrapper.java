@@ -12,6 +12,7 @@ import org.junit.platform.launcher.listeners.TestExecutionSummary;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +29,8 @@ import java.util.List;
  * 
  * Run:
  * 
- * java -cp .:./junit-platform-console-standalone-1.9.2.jar unl.soc.TestWrapper unl.soc.ColorUtilsTests -reportPass
+ * java -cp .:./junit-platform-console-standalone-1.9.2.jar unl.soc.TestWrapper
+ * unl.soc.ColorUtilsTests -reportPass
  * 
  * @author cbourke
  */
@@ -73,6 +75,8 @@ public class TestWrapper {
 		TestWrapper bt = new TestWrapper(tests);
 
 		// suppress standard output while tests are run
+		// this prevents any red herring output made by
+		// the code (that shouldn't be made)
 		boolean suppressStdOut = false;
 		PrintStream original = null;
 		if (suppressStdOut) {
@@ -94,22 +98,27 @@ public class TestWrapper {
 		}
 
 		TestExecutionSummary summary = bt.listener.getSummary();
+		PrintWriter stdout = new PrintWriter(System.out);
 
 		long numTests = summary.getTestsFoundCount();
 		long numFail = summary.getTestsFailedCount();
 		long numPass = summary.getTestsSucceededCount();
 
 		// prints total number of points, number of pass/fail
-		// and total tests in csv format
+		summary.printTo(stdout);
+		summary.printFailuresTo(stdout);
 		System.out.printf("Tests PASS: %d\n", numPass);
 		System.out.printf("Tests FAIL: %d\n", numFail);
 		System.out.printf("Total:      %d\n", numTests);
 
-		if (reportPass) {
-			System.exit((int) numPass);
-		} else {
-			System.exit((int) numFail);
+		// POSIX only supports 1 ubyte ([0, 255]) exit codes; we do
+		// our best effort to report the value, but default to 1
+		// otherwise
+		int exitValue = reportPass ? (int) numPass : (int) numFail;
+		if (exitValue > 255) {
+			exitValue = 1;
 		}
+		System.exit(exitValue);
 
 	}
 
