@@ -40,8 +40,38 @@ public class ColorUtils {
 	 * @return
 	 */
 	public static RGB toGrayScale(RGB color, GrayScaleMode mode) {
-		//TODO: implement
-		return null;
+		RGB gray=null;
+		if((color.getRed() <0 || color.getGreen() <0 || color.getBlue() <0) || (color.getRed() >255 || color.getGreen() >255 || color.getBlue() >255 ))
+		{
+			//throw new IllegalArgumentException("RGB values out of bound!");
+			throw new IllegalRgbException("RGB values out of bound!");
+		}
+		switch (mode) {
+			case AVERAGE: {
+				int result = (int) Math.round((double) (color.getRed() + color.getGreen() + color.getBlue()) / 3);
+				result = (result > 255) ? (255) : (result);
+				gray = new RGB(result, result, result);
+				break;
+			}
+			case LIGHTNESS: {
+				int result = (int) Math.round((double) (max(color.getRed(), color.getGreen(), color.getBlue())
+						+ min(color.getRed(), color.getGreen(), color.getBlue())) / 2);
+				result = (result > 255) ? (255) : (result);
+				gray = new RGB(result, result, result);
+				break;
+			}
+			case LUMINOSITY: {
+				int result = (int) Math
+						.round((double) (0.21 * color.getRed() + 0.72 * color.getGreen() + 0.07 * color.getBlue()));
+				result = (result > 255) ? (255) : (result);
+				gray = new RGB(result, result, result);
+				break;
+			}
+			default: {
+				break;
+			}
+		}
+		return gray;
 	}
 	
 	/**
@@ -51,8 +81,19 @@ public class ColorUtils {
 	 * @return
 	 */
 	public static RGB toSepia(RGB color) {
-		//TODO: implement
-		return null;
+		if((color.getRed() <0 || color.getGreen() <0 || color.getBlue() <0) || (color.getRed() >255 || color.getGreen() >255 || color.getBlue() >255 ))
+		{
+			//throw new IllegalArgumentException("RGB values out of bound!");
+			throw new IllegalRgbException("RGB values out of bound!");
+		}
+		int R = (int)Math.round((double)(0.393*color.getRed() + 0.769*color.getGreen() + 0.189*color.getBlue()));
+		int G= (int)Math.round((double)(0.349*color.getRed() + 0.686*color.getGreen() + 0.168*color.getBlue()));
+		int B= (int)Math.round((double)(0.272*color.getRed() + 0.534*color.getGreen() + 0.131*color.getBlue()));
+		R=(R>255)?(255):(R);
+		G=(G>255)?(255):(G);
+		B=(B>255)?(255):(B);
+		RGB sepia = new RGB(R,G,B);
+		return sepia;
 	}
 
 }

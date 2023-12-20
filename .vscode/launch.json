@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ImageDriver",
+            "request": "launch",
+            "mainClass": "unl.soc.ImageDriver",
+            "projectName": "CSCE155-Java-Lab06"
+        },
+        {
+            "type": "java",
+            "name": "RGB",
+            "request": "launch",
+            "mainClass": "unl.soc.RGB",
+            "projectName": "CSCE155-Java-Lab06"
+        },
+        {
+            "type": "java",
+            "name": "TestWrapper",
+            "request": "launch",
+            "mainClass": "unl.soc.TestWrapper",
+            "args": "unl.soc.ColorUtils unl.soc.ColorUtilsTests -reportPass",
+            "projectName": "CSCE155-Java-Lab06"
+        }
+    ]
+}

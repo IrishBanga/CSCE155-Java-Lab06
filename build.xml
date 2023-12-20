@@ -4,30 +4,44 @@
     <property name="src.dir" value="src"/> 
     <property name="build.dir" value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/> 
-    <property name="main.class" value="CHANGE THIS"/>
+    <property name="main.class" value="unl.soc.TestWrapper"/>
 
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
     <target name="compile">
-      <mkdir dir="${classes.dir}"/>
-      <javac includeantruntime="false" 
-             executable="/usr/bin/javac"
-             fork="true"
-             srcdir="${src.dir}" 
-             destdir="${classes.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <javac includeantruntime="false" 
+               executable="C:\Program Files\Java\jdk-20\bin\javac.exe"
+               fork="true"
+               srcdir="${src.dir}" 
+               destdir="${classes.dir}">
+            <classpath>
+                <path refid="junit.class.path"/>
+            </classpath>
+        </javac>
     </target>
 
     <path id="run.path">
       <pathelement path="${classes.dir}"/>
     </path>
 
+    <path id="junit.class.path">
+        <fileset dir="lib" includes="*.jar" />
+        <pathelement location="${build.dir}" />
+    </path>
+    
     <target name="run">
-       <java classname="${main.class}"
-             fork="false">
-         <classpath refid="run.path"/>
-       </java>
+        <java classname="${main.class}" fork="false">
+        <arg value="unl.soc.ColorUtils" />
+       <arg value="unl.soc.ColorUtilsTests" />
+        <arg value="-reportPass"/>  
+            <classpath>
+                <path refid="run.path"/>
+                <path refid="junit.class.path"/>
+            </classpath>
+        </java>
     </target>
 
 </project>
